@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from models.users_model import SignupModel, LoginModel
-from database.database_connection import mycursor, dbcon
+#from database.database_connection import mycursor, dbcon
 from email_service import send_email
 import random
 
@@ -25,8 +25,8 @@ def create_users(users: SignupModel):
         verification_code
     )
 
-    mycursor.execute(sql, val)
-    dbcon.commit()
+    #mycursor.execute(sql, val)
+   #dbcon.commit()
 
     # 2) إرسال الكود عبر الإيميل
     send_email(
