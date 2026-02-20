@@ -42,8 +42,8 @@ def create_users(users: SignupModel):
 def login(data: LoginModel):
     sql = "SELECT * FROM users WHERE user_email=%s"
     val = (data.user_email,)
-    mycursor.execute(sql, val)
-    user = mycursor.fetchone()
+   # mycursor.execute(sql, val)
+  #  user = mycursor.fetchone()
 
     if not user:
         return {"state": "error", "message": "email not found"}

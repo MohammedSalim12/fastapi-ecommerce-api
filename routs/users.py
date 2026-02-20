@@ -12,8 +12,8 @@ router = APIRouter(prefix="/users", tags=["Users"])
 @router.get("/")
 def get_all_users():
     sql = "SELECT * FROM users"
-    mycursor.execute(sql)
-    users = mycursor.fetchall()
+   # mycursor.execute(sql)
+    #users = mycursor.fetchall()
     return users
 
 
