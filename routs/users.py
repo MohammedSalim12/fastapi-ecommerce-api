@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from database.database_connection import mycursor, dbcon
+#from database.database_connection import mycursor, dbcon
 
 
 # نحدد الراوتر ومساره الأساسي
@@ -23,8 +23,8 @@ def get_all_users():
 @router.get("/{user_id}")
 def get_user_by_id(user_id: int):
     sql = "SELECT * FROM users WHERE id=%s"
-    mycursor.execute(sql, (user_id,))
-    user = mycursor.fetchone()
+    #mycursor.execute(sql, (user_id,))
+    #user = mycursor.fetchone()
 
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
@@ -38,8 +38,8 @@ def get_user_by_id(user_id: int):
 @router.delete("/{user_id}")
 def delete_user(user_id: int):
     sql = "DELETE FROM users WHERE id=%s"
-    mycursor.execute(sql, (user_id,))
-    dbcon.commit()
+    #mycursor.execute(sql, (user_id,))
+    #dbcon.commit()
 
     return {"state": "success", "message": "User deleted successfully"}
 
@@ -56,7 +56,7 @@ def update_user(user_id: int, data: dict):
     """
     val = (data["user_name"], data["user_email"], data["user_phone"], user_id)
 
-    mycursor.execute(sql, val)
-    dbcon.commit()
+   # mycursor.execute(sql, val)
+  #  dbcon.commit()
 
     return {"state": "success", "message": "User updated successfully"}

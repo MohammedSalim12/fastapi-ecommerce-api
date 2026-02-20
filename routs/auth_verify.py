@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from database.database_connection import mycursor, dbcon  # عدّل هذا السطر حسب مكان الاتصال عندك
+#from database.database_connection import mycursor, dbcon  # عدّل هذا السطر حسب مكان الاتصال عندك
 
 router = APIRouter()
 
@@ -13,8 +13,8 @@ def verify_user_code(data: VerifyCodeModel):
     # 1) نجيب الكود الحقيقي من قاعدة البيانات حسب الإيميل
     sql = "SELECT user_verfiycode FROM users WHERE user_email = %s"
     val = (data.user_email,)
-    mycursor.execute(sql, val)
-    result = mycursor.fetchone()
+   # mycursor.execute(sql, val)
+    #result = mycursor.fetchone()
 
     if not result:
         raise HTTPException(status_code=404, detail="User not found")
@@ -27,7 +27,7 @@ def verify_user_code(data: VerifyCodeModel):
 
     # 3) (اختياري) نحدّث حالة المستخدم إلى verified
     update_sql = "UPDATE users SET user_approve = 1 WHERE user_email = %s"
-    mycursor.execute(update_sql, val)
-    dbcon.commit()
+   # mycursor.execute(update_sql, val)
+    #dbcon.commit()
 
     return {"status": "success", "message": "User verified successfully"}
