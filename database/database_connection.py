@@ -9,16 +9,19 @@ import mysql.connector
 
  # mycursor = dbcon.cursor()
 
+
+
 import mysql.connector
 import os
 
 dbcon = mysql.connector.connect(
-    host=os.getenv("mysql.railway.internal"),
-    user=os.getenv("root"),
-    password=os.getenv("OLgxgwLQhjSIMRLkphfycrEbEcbZaZIi"),
-    database=os.getenv("railway"),
-    port=os.getenv("3306")
+    host=os.getenv("MYSQLHOST"),
+    user=os.getenv("MYSQLUSER"),
+    password=os.getenv("MYSQLPASSWORD"),
+    database=os.getenv("MYSQLDATABASE"),
+    port=os.getenv("MYSQLPORT")
 )
+
 
 mycursor = dbcon.cursor(dictionary=True)
 print("DB Connected Successfully")
