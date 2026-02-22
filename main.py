@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from routs.auth import router as auth_router
 from routs.users import router as users_router
 from routs.auth_verify import router as verify_router
+import database.database_connection
 
 app = FastAPI()
 
