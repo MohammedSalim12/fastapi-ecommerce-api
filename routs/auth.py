@@ -13,7 +13,7 @@ def create_users(users: SignupModel):
     verification_code = random.randint(100000, 999999)
 
     sql = """
-        INSERT INTO users (user_name, user_email, user_password, user_phone, user_verfiycode)
+        INSERT INTO users (user_name, user_email, user_password, user_phone, user_verifycode)
         VALUES (%s, %s, %s, %s, %s)
     """
 

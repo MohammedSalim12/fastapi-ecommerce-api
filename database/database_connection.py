@@ -25,14 +25,15 @@ dbcon = mysql.connector.connect(
 )
 
 
-mycursor = dbcon.cursor(dictionary=True)
+mycursor = dbcon.cursor()
+
 print("DB Connected Successfully")
 
 def create_users_table():
-    mycursor.execute("DROP TABLE IF EXISTS users;") 
+    
     dbcon.commit()
     try:
-        mycursor.execute("DROP TABLE IF EXISTS users;") 
+         
         dbcon.commit()
         mycursor.execute("""
          

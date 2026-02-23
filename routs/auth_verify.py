@@ -11,7 +11,7 @@ class VerifyCodeModel(BaseModel):
 @router.post("/users/verify")
 def verify_user_code(data: VerifyCodeModel):
     # 1) نجيب الكود الحقيقي من قاعدة البيانات حسب الإيميل
-    sql = "SELECT user_verfiycode FROM users WHERE user_email = %s"
+    sql = "SELECT user_verifycode FROM users WHERE user_email = %s"
     val = (data.user_email,)
    # mycursor.execute(sql, val)
     #result = mycursor.fetchone()
