@@ -29,16 +29,23 @@ mycursor = dbcon.cursor(dictionary=True)
 print("DB Connected Successfully")
 
 def create_users_table():
-    mycursor.execute("DROP TABLE IF EXISTS users;")
+    mycursor.execute("DROP TABLE IF EXISTS users;") 
+    dbcon.commit()
     try:
+        mycursor.execute("DROP TABLE IF EXISTS users;") 
+        dbcon.commit()
         mycursor.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                user_name VARCHAR(255),
-                user_email VARCHAR(255) UNIQUE,
-                user_password VARCHAR(255),
-                user_phone VARCHAR(20)
-            );
+         
+            CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
+    user_email VARCHAR(100) NOT NULL UNIQUE,
+    user_phone VARCHAR(100) NOT NULL UNIQUE,
+    user_verifycode INT NOT NULL,
+    user_approve TINYINT NOT NULL DEFAULT 0,
+    user_create TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
         """)
         dbcon.commit()
         print("Users table created successfully")
@@ -47,3 +54,7 @@ def create_users_table():
         
 # استدعاء الدالة 
 create_users_table()
+
+
+
+
