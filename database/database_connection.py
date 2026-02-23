@@ -29,14 +29,15 @@ mycursor = dbcon.cursor(dictionary=True)
 print("DB Connected Successfully")
 
 def create_users_table():
+    mycursor.execute("DROP TABLE IF EXISTS users;")
     try:
         mycursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(255),
-                email VARCHAR(255) UNIQUE,
-                password VARCHAR(255),
-                phone VARCHAR(20)
+                user_name VARCHAR(255),
+                user_email VARCHAR(255) UNIQUE,
+                user_password VARCHAR(255),
+                user_phone VARCHAR(20)
             );
         """)
         dbcon.commit()
