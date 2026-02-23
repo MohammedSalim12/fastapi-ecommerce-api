@@ -10,7 +10,7 @@ router = APIRouter(prefix="/users", tags=["Auth"])
 @router.post("/signup")
 def create_users(users: SignupModel):
     # 1) توليد كود عشوائي
-    verification_code = random.randint(100000, 999999)
+    verification_code = random.randint(10000, 99999)
 
     sql = """
         INSERT INTO users (user_name, user_email, user_password, user_phone, user_verifycode)
