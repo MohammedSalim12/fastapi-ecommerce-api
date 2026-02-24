@@ -40,23 +40,34 @@ def create_users(users: SignupModel):
 
 @router.post("/login")
 def login(data: LoginModel):
-    sql = "SELECT * FROM users WHERE user_email=%s"
-    val = (data.user_email,)
-    mycursor.execute(sql, val)
-    user = mycursor.fetchone()
+    try:
+        print("LOGIN DATA:", data)
 
-    if not user:
-        return {"state": "error", "message": "email not found"}
+        sql = "SELECT * FROM users WHERE user_email=%s"
+        val = (data.user_email,)
+        mycursor.execute(sql, val)
+        user = mycursor.fetchone()
 
-    # user[2] = user_password حسب ترتيب جدولك
-    if user[2] != data.user_password:
-        return {"state": "error", "message": "wrong password"}
+        print("USER ROW:", user)
 
-    return {
-        "state": "success",
-        "message": "login successful",
-        "user_id": user[0],
-        "user_name": user[1],
-        "user_email": user[3],
-        "user_phone": user[4]
-    }
+        if not user:
+            return {"state": "error", "message": "email not found"}
+
+        print("PASSWORD IN DB:", user[2])
+        print("PASSWORD SENT:", data.user_password)
+
+        if user[2] != data.user_password:
+            return {"state": "error", "message": "wrong password"}
+
+        return {
+            "state": "success",
+            "message": "login successful",
+            "user_id": user[0],
+            "user_name": user[1],
+            "user_email": user[3],
+            "user_phone": user[4]
+        }
+
+    except Exception as e:
+        print("LOGIN ERROR:", e)
+        return {"state": "error", "message": "server error"}
