@@ -71,3 +71,4 @@ def login(data: LoginModel):
     except Exception as e:
         print("LOGIN ERROR:", e)
         return {"state": "error", "message": "server error"}
+
