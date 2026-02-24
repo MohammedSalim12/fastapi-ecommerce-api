@@ -43,7 +43,7 @@ def login(data: LoginModel):
     try:
         print("LOGIN DATA:", data)
 
-        sql = "SELECT * FROM users WHERE user_email=%s"
+        sql = "SELECT * FROM users WHERE user_email=%s AND user_approve=1"
         val = (data.user_email,)
         mycursor.execute(sql, val)
         user = mycursor.fetchone()
