@@ -19,3 +19,10 @@ class Users(BaseModel):
     user_approve: int
     user_password: str
     user_create: datetime | None = None
+    
+class ForgetPasswordModel(BaseModel):
+    user_email: str
+
+class VerifyCodeResetPasswordModel(BaseModel):
+    user_email: str
+    verify_code: int
