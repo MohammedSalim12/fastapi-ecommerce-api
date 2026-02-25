@@ -1,4 +1,3 @@
-from my_app_ecommerce.models.users_model import LoginModel
 from database.database_connection import mycursor, dbcon
 from fastapi import APIRouter
 from models.users_model import VerifyCodeResetPasswordModel

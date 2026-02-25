@@ -26,3 +26,5 @@ class ForgetPasswordModel(BaseModel):
 class VerifyCodeResetPasswordModel(BaseModel):
     user_email: str
     verify_code: int
+    
+    
