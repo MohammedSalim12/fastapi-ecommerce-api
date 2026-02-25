@@ -7,7 +7,7 @@ router = APIRouter(prefix="/users", tags=["Auth"])
 def verify_code(data: VerifyCodeResetPasswordModel):
     try:
         user_email = data.user_email
-        verify_code = data.verify_code
+        user_verifycode = data.user_verifycode
 
         # 1) نجيب الكود من قاعدة البيانات
         sql = "SELECT user_verifycode FROM users WHERE user_email=%s"
